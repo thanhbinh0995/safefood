@@ -44,7 +44,60 @@ use common\components\Util;
                             ['label' => Yii::t('app', 'Create User'), 'icon' => 'fa fa-circle-o', 'url' => ['/user/create'],],
                         ],
                     ],
-                    
+                    [
+                        'label' => Yii::t('app', 'Category'),
+                        'icon' => 'glyphicon glyphicon-user',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => Yii::t('app', 'List Category'), 'icon' => 'fa fa-circle-o', 'url' => ['/category'],],
+                            ['label' => Yii::t('app', 'Create Category'), 'icon' => 'fa fa-circle-o', 'url' => ['/category/create'],],
+                        ],
+                    ],
+                    [
+                        'label' => Yii::t('app', 'Food'),
+                        'icon' => 'glyphicon glyphicon-user',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => Yii::t('app', 'List Food'), 'icon' => 'fa fa-circle-o', 'url' => ['/food'],],
+                            ['label' => Yii::t('app', 'Create Food'), 'icon' => 'fa fa-circle-o', 'url' => ['/food/create'],],
+                        ],
+                    ],
+                    [
+                        'label' => Yii::t('app', 'News'),
+                        'icon' => 'glyphicon glyphicon-user',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => Yii::t('app', 'List News'), 'icon' => 'fa fa-circle-o', 'url' => ['/news'],],
+                            ['label' => Yii::t('app', 'Create News'), 'icon' => 'fa fa-circle-o', 'url' => ['/news/create'],],
+                        ],
+                    ],
+                    [
+                        'label' => Yii::t('app', 'Quality'),
+                        'icon' => 'glyphicon glyphicon-user',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => Yii::t('app', 'List Quality'), 'icon' => 'fa fa-circle-o', 'url' => ['/quality'],],
+                            ['label' => Yii::t('app', 'Create Quality'), 'icon' => 'fa fa-circle-o', 'url' => ['/quality/create'],],
+                        ],
+                    ],
+                    [
+                        'label' => Yii::t('app', 'Restaurant'),
+                        'icon' => 'glyphicon glyphicon-user',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => Yii::t('app', 'List Restaurant'), 'icon' => 'fa fa-circle-o', 'url' => ['/restaurant'],],
+                            ['label' => Yii::t('app', 'Create Restaurant'), 'icon' => 'fa fa-circle-o', 'url' => ['/restaurant/create'],],
+                        ],
+                    ],
+                    [
+                        'label' => Yii::t('app', 'Tag'),
+                        'icon' => 'glyphicon glyphicon-user',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => Yii::t('app', 'List Tag'), 'icon' => 'fa fa-circle-o', 'url' => ['/tag'],],
+                            ['label' => Yii::t('app', 'Create Tag'), 'icon' => 'fa fa-circle-o', 'url' => ['/tag/create'],],
+                        ],
+                    ],
                     ['label' => 'Login', 'icon' => 'fa  fa-sign-out', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                 ],
             ]
