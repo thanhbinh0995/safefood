@@ -2529,18 +2529,18 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kartik-v/yii2-widget-select2.git",
-            "reference": "3943a643d106f775293ed5c4306b67b954b84058"
+            "reference": "03f202e9e2415f4c84e93a64074d85677fd0cc51"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kartik-v/yii2-widget-select2/zipball/3943a643d106f775293ed5c4306b67b954b84058",
-            "reference": "3943a643d106f775293ed5c4306b67b954b84058",
+            "url": "https://api.github.com/repos/kartik-v/yii2-widget-select2/zipball/03f202e9e2415f4c84e93a64074d85677fd0cc51",
+            "reference": "03f202e9e2415f4c84e93a64074d85677fd0cc51",
             "shasum": ""
         },
         "require": {
             "kartik-v/yii2-krajee-base": "~1.7"
         },
-        "time": "2017-02-22 03:53:52",
+        "time": "2017-04-12 09:00:24",
         "type": "yii2-extension",
         "extra": {
             "branch-alias": {

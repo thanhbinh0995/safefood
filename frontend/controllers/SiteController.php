@@ -12,10 +12,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
-use yii\helpers\Url;
-use common\models\Tour;
-use common\models\Price;
-use yii\data\ArrayDataProvider;
+
 /**
  * Site controller
  */
@@ -65,19 +62,6 @@ class SiteController extends Controller
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
-            'doc' => [
-                'class' => 'light\swagger\SwaggerAction',
-                'restUrl' => URL::to(['/site/api'], true),
-            ],
-            'api' => [
-                'class' => 'light\swagger\SwaggerApiAction',
-                'scanDir' => [
-                    Yii::getAlias('@api/swagger'),
-                    Yii::getAlias('@api/controllers'),
-                    Yii::getAlias('@api/models'),
-                ],
-                // 'api_key' => 'test'
-            ],
         ];
     }
 
@@ -88,26 +72,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $pages = 2;
-        $tours = Tour::find()->all();
-      
-        $tourAddress = [];
-        $tourPrice =[];
-        foreach($tours as $tour){
-            $price = Price::find()->where(['tourId'=>$tour->id])->orderby('ninePax ASC')->one();
-            if($price){
-               $tour->price = $price->ninePax;
-            }
-        }
-
-        $provider = new ArrayDataProvider([
-            'allModels' => $tours,
-            'pagination' => [
-                'pageSize' => 2
-            ],
-        ]);
-
-        return $this->render('index', ['listDataProvider' => $provider]);
+        return $this->render('index');
     }
 
     /**

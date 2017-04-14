@@ -48,12 +48,15 @@ class ComposerStaticInit8a7a0423ef3e837f0edec1955fddd73b
         ),
         'k' => 
         array (
+            'kartik\\sortable\\' => 16,
             'kartik\\select2\\' => 15,
             'kartik\\plugins\\fileinput\\' => 25,
             'kartik\\mpdf\\' => 12,
             'kartik\\grid\\' => 12,
+            'kartik\\form\\' => 12,
             'kartik\\file\\' => 12,
             'kartik\\export\\' => 14,
+            'kartik\\dynagrid\\' => 16,
             'kartik\\dialog\\' => 14,
             'kartik\\base\\' => 12,
         ),
@@ -179,6 +182,10 @@ class ComposerStaticInit8a7a0423ef3e837f0edec1955fddd73b
         array (
             0 => __DIR__ . '/..' . '/lajax/yii2-language-picker',
         ),
+        'kartik\\sortable\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-sortable',
+        ),
         'kartik\\select2\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-select2',
@@ -195,6 +202,10 @@ class ComposerStaticInit8a7a0423ef3e837f0edec1955fddd73b
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-grid',
         ),
+        'kartik\\form\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-activeform',
+        ),
         'kartik\\file\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-fileinput',
@@ -202,6 +213,10 @@ class ComposerStaticInit8a7a0423ef3e837f0edec1955fddd73b
         'kartik\\export\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-export',
+        ),
+        'kartik\\dynagrid\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-dynagrid',
         ),
         'kartik\\dialog\\' => 
         array (
