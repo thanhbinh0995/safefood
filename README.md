@@ -1,3 +1,7 @@
+You need Config vitual host 
+In Xampp, follow step by this website: https://john-dugan.com/wamp-vhost-setup/
+
+
 Yii 2 Advanced Project Template
 ===============================
 
@@ -53,3 +57,4 @@ tests                    contains various tests for the advanced application
     codeception/         contains tests developed with Codeception PHP Testing Framework
 ```
 Bearer
+
