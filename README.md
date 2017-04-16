@@ -1,6 +1,8 @@
-You need Config vitual host 
+-- Clone code from github
+-- Install composer, afetr that run in command line: composer install
+-- You need Config vitual host 
 In Xampp, follow step by this website: https://john-dugan.com/wamp-vhost-setup/
-Create database that name is safefood, after that run: php yii migrate 
+-- Create database that name is safefood, after that run: php yii migrate 
 
 Yii 2 Advanced Project Template
 ===============================
