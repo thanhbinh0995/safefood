@@ -22,6 +22,7 @@ use yii\behaviors\TimestampBehavior;
  */
 class News extends \yii\db\ActiveRecord
 {
+    public $fileImage;
     public function behaviors()
     {
         return [
@@ -44,6 +45,7 @@ class News extends \yii\db\ActiveRecord
             [['categoryId', 'created_at', 'updated_at', 'deleted_at'], 'integer'],
             [['content'], 'string'],
             [['title', 'mainHeader', 'image'], 'string', 'max' => 255],
+            [['fileImage'], 'file', 'extensions' => 'png, jpg', 'skipOnEmpty' => true],
             [['categoryId'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['categoryId' => 'categoryId']],
         ];
     }

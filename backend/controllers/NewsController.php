@@ -8,7 +8,8 @@ use common\models\NewsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use common\components\Util;
+use yii\web\UploadedFile;
 /**
  * NewsController implements the CRUD actions for News model.
  */
@@ -65,7 +66,22 @@ class NewsController extends Controller
     {
         $model = new News();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->fileImage = UploadedFile::getInstance($model, 'fileImage');
+            if ($model->fileImage) {
+                $model->image = Yii::$app->security->generateRandomString() . '.' . $model->fileImage->extension;
+            }
+            if ($model->save()) {
+                if (!empty($model->image)) {
+                    Util::uploadFile($model->fileImage, $model->image);
+                }
+                return $this->redirect(['index']);
+            } else {
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
+            }
+
             return $this->redirect(['view', 'id' => $model->newsId]);
         } else {
             return $this->render('create', [
@@ -84,8 +100,24 @@ class NewsController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->newsId]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->fileImage = UploadedFile::getInstance($model, 'fileImage');   
+            $old_image = "";
+            if ($model->fileImage) {
+                $oldImage = $model->image;
+                $model->image = Yii::$app->security->generateRandomString() . '.' . $model->fileImage->extension;
+            }
+            if ($model->save()) {
+                if (!empty($model->fileImage)) {
+                    Util::deleteFile($oldImage);
+                    Util::uploadFile($model->fileImage, $model->image);
+                }
+                return $this->redirect(['index']);
+            } else {
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
+            }
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -101,18 +133,11 @@ class NewsController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
+        $model = $this->findModel($id);
+        Util::deleteFile($model->image);
+        $model->delete();
         return $this->redirect(['index']);
     }
-
-    /**
-     * Finds the News model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return News the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     protected function findModel($id)
     {
         if (($model = News::findOne($id)) !== null) {
