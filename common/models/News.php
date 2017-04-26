@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+
 /**
  * This is the model class for table "news".
  *
@@ -23,13 +24,15 @@ use yii\behaviors\TimestampBehavior;
 class News extends \yii\db\ActiveRecord
 {
     public $fileImage;
+    public $tags = array();
     public function behaviors()
     {
         return [
             TimestampBehavior::className(),
-            
+
         ];
     }
+
     public static function tableName()
     {
         return 'news';
@@ -41,7 +44,7 @@ class News extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['categoryId', 'title'], 'required'],
+            [['categoryId', 'title', 'tags'], 'required'],
             [['categoryId', 'created_at', 'updated_at', 'deleted_at'], 'integer'],
             [['content'], 'string'],
             [['title', 'mainHeader', 'image'], 'string', 'max' => 255],
@@ -82,5 +85,48 @@ class News extends \yii\db\ActiveRecord
     public function getNewsTags()
     {
         return $this->hasMany(NewsTag::className(), ['newsId' => 'newsId']);
+    }
+
+    public static function listNews()
+    {
+        return ArrayHelper::map(self::find()->all(), 'newsId', 'title');
+    }
+
+    public function getTags()
+    {
+        $tags = NewsTag::findAll([
+            'newsId' => $this->newsId,
+        ]);
+        return $tags;
+    }
+
+    public function setTags()
+    {
+        $values = $this->tags;
+        foreach ($values as $value) {
+            $newsTag = new NewsTag();
+            $newsTag->newsId = $this->newsId;
+            $newsTag->tagId = $value;
+            $newsTag->save();
+        }
+    }
+
+    public function deleteTags()
+    {
+        $values = NewsTag::findAll([
+            'newsId' => $this->newsId,
+        ]);
+        foreach ($values as $value) {
+            $value->delete();
+        }
+    }
+
+    public static function getTagsName($model)
+    {
+        $tags = array();
+        foreach ($model->newsTags as $newsTag) {
+            array_push($tags, $newsTag->tag->name);
+        }
+        return implode(", ", $tags);
     }
 }

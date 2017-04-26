@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "food".
  *
@@ -78,5 +79,9 @@ class Food extends \yii\db\ActiveRecord
     public function getQualities()
     {
         return $this->hasMany(Quality::className(), ['foodId' => 'foodId']);
+    }
+
+    public function listFood(){
+        return ArrayHelper::map(self::find()->all(), 'foodId', 'name');
     }
 }

@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use common\components\Util;
+use common\models\News;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\News */
@@ -31,6 +32,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'newsId',
             'categoryId',
+            [
+                'label' => 'Tags',
+                'value' => News::getTagsName($model),
+            ],
             'title',
             'mainHeader',
             'content:ntext',
