@@ -9,6 +9,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use common\components\Util;
 
 AppAsset::register($this);
 ?>
@@ -25,7 +26,7 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<div class="wrap">
+<div class="wrapper">
     <div class="top"></div>
     <header id="header">
         <div class="container">
@@ -34,7 +35,7 @@ AppAsset::register($this);
                     <div class="navbar-header">
                         <div class="logo">
                             <a href="" class="navbar-brand">
-                                <img class="img-responsive" src="img/logo.png" alt="logo"/>
+                                <img class="img-responsive" src="<?=  Util::getUrlImage('logo.png')  ?>" alt="logo"/>
                                 <div class="logo-text">
                                     <p class="logo-text-top">Safe Food</p>
                                     <p class="logo-text-bottom">How to Tell if Food is Safe to Eat</p>
@@ -57,34 +58,33 @@ AppAsset::register($this);
         </div>
     </header>
 
-    <div class="container">
-        <?= Alert::widget() ?>
+    <section id="main-content">
         <?= $content ?>
-    </div>
-</div>
-<footer id="footer" class="footer panel-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 copy-right">
-                <ul class="social mb-60 wow fadeInUp" data-wow-duration="1.5s">
-                    <li>
-                        <a class="facebook-icon" target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
-                    </li>
-                    <li>
-                        <a class="tumblr-icon" target="_blank" href="https://www.tumblr.com/"><i class="fa fa-tumblr"></i></a>
-                    </li>
-                    <li>
-                        <a class="google-icon" target="_blank" href="https://google.com/"><i class="fa fa-google"></i></a>
-                    </li>
-                    <li>
-                        <p>Copyright @ by Tina</p>
-                    </li>
-                </ul>
+    </section>
+    <footer id="footer" class="footer panel-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 copy-right">
+                    <ul class="social mb-60 wow fadeInUp" data-wow-duration="1.5s">
+                        <li>
+                            <a class="facebook-icon" target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li>
+                            <a class="tumblr-icon" target="_blank" href="https://www.tumblr.com/"><i class="fa fa-tumblr"></i></a>
+                        </li>
+                        <li>
+                            <a class="google-icon" target="_blank" href="https://google.com/"><i class="fa fa-google"></i></a>
+                        </li>
+                        <li>
+                            <p>Copyright @ by Tina</p>
+                        </li>
+                    </ul>
 
+                </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
+</div>
 <?php $this->endBody() ?>
 </body>
 </html>
