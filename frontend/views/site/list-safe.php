@@ -1,52 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Safe Food | List safe</title>
-	<link rel="stylesheet" href="css/reset.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/animate.css">
-	<link rel="stylesheet" href="css/header.css">
-	<link rel="stylesheet" href="css/footer.css">
-	<link rel="stylesheet" href="css/styles.css">
-	<link rel="stylesheet" href="css/page.css">
-</head>
-<body>
+<?php $this->title = 'Safe Food | List safe'; ?>
+
 <div id="wrapper">
 	<div class="top"></div>
-	<header id="header">
-		<div class="container">
-			<nav class="navbar">
-				<div class="container">
-					<div class="navbar-header">
-						<div class="logo">
-							<a href="" class="navbar-brand">
-								<img class="img-responsive" src="img/logo.png" alt="logo"/>
-								<div class="logo-text">
-									<p class="logo-text-top">Safe Food</p>
-									<p class="logo-text-bottom">How to Tell if Food is Safe to Eat</p>
-								</div>
-							</a>
-						</div>
-					</div>
-					<div id="navbar" class="nav navbar-nav navbar-right navbar-collapse collapse">
-						<ul class="nav navbar-nav text-center">
-							<li class="first"><a href="index.html">Home</a></li>
-							<li><a href="news.html">News</a></li>
-							<li class="active"><a href="list-safe.php">List Safe</a></li>
-							<li><a href="list-non-safe.html">List Non-safe</a></li>
-							<li><a href="about.html">About us</a></li>
-							<li class="last"><a href="contact.html" class="last">Contact</a></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</div>
-	</header>
 	<section id="main-content">
 		<div class="top-title">
 			<div class="container">
@@ -124,33 +79,5 @@
 			</div>
 		</div>
 	</section>
-	<footer id="footer" class="footer panel-footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 copy-right">
-				    <ul class="social mb-60 wow fadeInUp" data-wow-duration="1.5s">
-				        <li>
-				            <a class="facebook-icon" target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
-				        </li>
-				        <li>
-				            <a class="tumblr-icon" target="_blank" href="https://www.tumblr.com/"><i class="fa fa-tumblr"></i></a>
-				        </li>
-				        <li>
-				            <a class="google-icon" target="_blank" href="https://google.com/"><i class="fa fa-google"></i></a>
-				        </li>
-				        <li>
-				            <p>Copyright @ by Tina</p>
-				        </li>
-				    </ul>
-					
-				</div>
-			</div>
-		</div>
-	</footer>
+
 </div>
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/isotope.min.js"></script>
-    <script src="js/main.js"></script>
-</body>
-</html>
