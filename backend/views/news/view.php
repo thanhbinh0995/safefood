@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use common\components\Util;
+use common\models\News;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\News */
@@ -30,10 +32,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'newsId',
             'categoryId',
+            [
+                'label' => 'Tags',
+                'value' => News::getTagsName($model),
+            ],
             'title',
             'mainHeader',
             'content:ntext',
-            'image',
+            [
+                'attribute'=>'image',
+                'value'=>  Util::getUrlImage($model->image),
+                'format' => ['image',['width'=>'200','height'=>'200']],
+            ],
             'created_at',
             'updated_at',
             'deleted_at',

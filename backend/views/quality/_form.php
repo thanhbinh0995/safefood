@@ -12,9 +12,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'foodId')->textInput() ?>
+    <?= $form->field($model, 'foodId')->dropDownList(\common\models\Food::listFood()) ?>
 
-    <?= $form->field($model, 'restaurantCode')->textInput() ?>
+    <?= $form->field($model, 'restaurantCode')->dropDownList(\common\models\Restaurant::listRestaurant()) ?>
 
     <?= $form->field($model, 'star')->textInput() ?>
 

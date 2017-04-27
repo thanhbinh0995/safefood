@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use common\models\Category;
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\NewsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -23,9 +23,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'newsId',
-            'categoryId',
+            [
+                'attribute' => 'categoryId',
+                'filter' => Category::listCategory(),
+                'value' => function ($model) {
+                    return $model->category->name;
+                },
+            ],
             'title',
             'mainHeader',
             'content:ntext',

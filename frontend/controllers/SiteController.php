@@ -1,4 +1,5 @@
 <?php
+
 namespace frontend\controllers;
 
 use Yii;
@@ -12,6 +13,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use common\models\News;
 
 /**
  * Site controller
@@ -210,4 +212,19 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
+    /**
+     * @return string
+     */
+    public function actionNews()
+    {
+        $news = News::find()->all();
+        return $this->render('news');
+    }
+
+    public function actionListSafe()
+    {
+        return $this->render('list-safe');
+    }
+
 }
