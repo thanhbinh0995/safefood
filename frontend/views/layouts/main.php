@@ -46,10 +46,10 @@ AppAsset::register($this);
                     <div id="navbar" class="nav navbar-nav navbar-right navbar-collapse collapse">
                         <ul class="nav navbar-nav text-center">
                             <li class="first"><a href="index">Home</a></li>
-                            <li class="active"><a href="news">News</a></li>
-                            <li><a href="list-safe">List Safe</a></li>
-                            <li><a href="list-non-safe">List Non-safe</a></li>
-                            <li><a href="about">About us</a></li>
+                            <li class="<?php if ($this->title === 'Safe Food | News') echo 'active'?>"><a href="/site/news">News</a></li>
+                            <li class="<?php if ($this->title === 'Safe Food | List safe') echo 'active'?>"><a href="/site/list-safe">List Safe</a></li>
+                            <li class="<?php if ($this->title === 'about') echo 'active'?>"><a href="list-non-safe">List Non-safe</a></li>
+                            <li class="<?php if ($this->title === 'about') echo 'active'?>"><a href="about">About us</a></li>
                             <li class="last"><a href="contact" class="last">Contact</a></li>
                         </ul>
                     </div>
