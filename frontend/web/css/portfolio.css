@@ -1,0 +1,108 @@
+#portfolio {
+	padding-top: 40px;
+    padding-bottom: 115px;
+}
+ul.portfolio-filter {
+	padding-bottom: 45px;
+    display: inline-block;
+}
+.portfolio-filter li {
+	display: inline-block;
+}
+.portfolio-filter li a {
+    color: #2a535e;
+	padding: 7px 12px;
+	transition: all 0.5s;
+	font-family: 'Lato-Bold', Arial, sans-serif;
+    background: #fff;
+    border: 1px solid #c1b9b9;
+    text-decoration: none;
+}
+.categories-filter-right {
+    float: right;
+}
+.mar-5 {
+    margin-left: -5px;
+}
+.portfolio-filter li a.active, .portfolio-filter li:hover a {
+	color: #fff;
+    background: #1f987d;
+}
+.categories-filter-right li a {
+    border: none;
+    padding: 5px;
+}
+.categories-filter-right li a.active, .categories-filter-right li:hover a {
+    background: none;
+}
+.portfolio-item {
+    padding: 5px;
+}
+
+.portfolio-box {
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio-box a.porfolio-popup {
+    display: block;
+}
+
+.portfolio-box .portfolio-image-wrap {
+    display: block;
+    transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -webkit-transition: all 0.3s ease 0s;
+}
+
+.portfolio-box .portfolio-image-wrap img {
+    width: 100%;
+}
+
+.portfolio-box:hover .portfolio-image-wrap {
+    transition: all 2s cubic-bezier(0.23, 0.5, 0.32, 0.7);
+    -o-transition: all 2s cubic-bezier(0.23, 0.5, 0.32, 0.7);
+    -moz-transition: all 2s cubic-bezier(0.23, 0.5, 0.32, 0.7);
+    -webkit-transition: all 2s cubic-bezier(0.23, 0.5, 0.32, 0.7);
+    width: 100%;
+}
+
+.portfolio-box .portfolio-caption-mask {
+    background: rgba(0, 0, 0, 0.8) none repeat;
+	position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    opacity: 0;
+    transition: all 0.5s ease-in-out 0s;
+    transform: scale(0);
+}
+.portfolio-box:hover .portfolio-caption-mask {
+	transform: scale(1);
+    opacity: 0.9;
+}
+.portfolio-box .portfolio-caption-mask h5 {
+    padding-top: 25%;
+    color: #fff;
+    margin-bottom: 5px;
+    font-family: "Lato-Black", Arial, sans-serif;
+    font-size: 22px;
+}
+
+.portfolio-box .portfolio-caption-mask p {
+    margin-bottom: 0px;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-family: "Lato-Black", Arial, sans-serif;
+}
+@media (max-width: 500px) {
+    .portfolio-box .portfolio-caption-mask h5 {
+        font-size: 16px;
+    }
+    .portfolio-box .portfolio-caption-mask p {
+        font-size: 13px;
+    }
+}

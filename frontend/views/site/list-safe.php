@@ -1,0 +1,55 @@
+<?php $this->title = 'Safe Food | List safe'; ?>
+<div id="wrapper">
+    <div class="top"></div>
+    <section id="main-content">
+        <div class="top-title">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item">List Safe</li>
+                </ol>
+            </div>
+        </div>
+        <div class="name-title">
+            <div class="container name-title">
+                <h3>List of Safe Restaurants</h3>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <p>
+                        <p class="col-xs-11"></p>
+                        <p class="col-xs-1"><input type="button" name="btn-search-safe" value="Search"></p>
+                        </p>
+                        <div>
+                            <table id="example2" class="table table-bordered table-hover">
+                                <thead class="box-header">
+                                <tr>
+                                    <th>Restaurant Code</th>
+                                    <th>Name</th>
+                                    <th>Address</th>
+                                </tr>
+                                </thead>
+                                <?php
+                                foreach ($restaurants as $restaurant) {
+
+                                    ?>
+                                    <tbody>
+                                    <tr>
+                                        <td><?= $restaurant['restaurantCode'] ?></td>
+                                        <td><?= $restaurant['name'] ?></td>
+                                        <td><?= $restaurant['address'] ?></td>
+                                    </tr>
+
+                                    </tbody>
+                                <?php } ?>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

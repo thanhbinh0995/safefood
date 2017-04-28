@@ -1,0 +1,121 @@
+
+.footer {
+	background: #1f987d;
+	padding-top: 27px;
+	color: #fff;
+}
+.text-footer {}
+.text-footer h5 {
+	font-family: 'Lato-Black', Arial, sans-serif;
+	padding-bottom: 20px;
+	font-weight: bolder;
+}
+.text-footer p {
+	font-family: 'Lato-Regular', Arial, sans-serif;
+}
+.text-footer ol {}
+.text-footer ol li{
+	padding-bottom: 15px;
+	padding-left: 22px;
+	text-decoration: none;
+	font-family: 'Lato-Regular', Arial, sans-serif;
+}
+.elem-4 ol li{
+	position: relative;
+}
+.elem-4 ol li:before {
+	content: "\f10c";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+	position: absolute;
+	left: 0;
+	top: 2px;
+	color: #34ab45;
+}
+.img-foot {
+	padding-left: 0;
+	padding-top: 15px;
+}
+
+
+.text-footer .twitter-content  {
+	position: relative;
+}
+.text-footer .twitter-text {
+	margin-left: 40px;
+	border: 1px solid #136956;
+	border-radius: 7%;
+	padding: 10px 20px;
+}
+.text-footer .twitter-text p {
+	color: #fff;
+	font-family: 'Lato-Italic', Arial, sans-serif;
+}
+.text-footer .twitter-text p.time {
+	font-family: 'Lato-Bold', Arial, sans-serif;
+	color: #0f4f41;
+}
+.text-footer .twitter-content img {
+	background: url('../img/tweet-bg.png');
+	padding: 6px;
+	position: absolute;
+	top: 15px;
+	left: 0px;
+}
+.text-footer form {
+	color: #a29d9d;
+	padding-top: 10px;
+	position: relative;
+}
+.text-footer form input[type=text],.text-footer form input[type=email], .text-footer form textarea {
+	width: 263px;
+	margin-bottom: 6px;
+	font-family: 'Lato-Italic', Arial, sans-serif;
+}
+.text-footer form textarea {
+	position: relative;
+	margin-bottom: 0;
+}
+.text-footer form input[type=submit] {
+	position: absolute;
+	bottom: 0px;
+	right: 0px; 
+	color: #fff;
+	background: #36af47;
+	font-family: 'Lato-Black', Arial, sans-serif;
+	padding: 9px 23px;
+}
+.mar-15 {
+	margin-bottom: 15px;
+}
+.social {
+	padding-top: 15px;
+}
+.social li {
+	display: inline-block;
+}
+.soscial li a {
+}
+.social li a i {
+	background: #fff;
+	color: #a9a9a7;
+	border-radius: 45%;
+}
+.social li a:hover i {
+	color: #2a535e;
+	background: rgba(42,83,84,0.6);
+}
+.social li a.facebook-icon i {
+	padding: 7px 10px;
+}
+.social li a.tumblr-icon i {
+	padding: 7px 10px;
+}
+.social li a.google-icon i {
+	padding: 7px;
+}
+.copy-right {
+	border-top: 1px solid #116c58;
+}

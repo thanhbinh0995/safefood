@@ -4,6 +4,8 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
+
 /**
  * This is the model class for table "restaurant".
  *
@@ -23,9 +25,10 @@ class Restaurant extends \yii\db\ActiveRecord
     {
         return [
             TimestampBehavior::className(),
-            
+
         ];
     }
+
     public static function tableName()
     {
         return 'restaurant';
@@ -66,5 +69,10 @@ class Restaurant extends \yii\db\ActiveRecord
     public function getQualities()
     {
         return $this->hasMany(Quality::className(), ['restaurantCode' => 'restaurantCode']);
+    }
+
+    public function listRestaurant()
+    {
+        return ArrayHelper::map(self::find()->all(), 'restaurantCode', 'name');
     }
 }

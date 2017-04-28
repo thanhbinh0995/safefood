@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "category".
  *
@@ -70,5 +71,8 @@ class Category extends \yii\db\ActiveRecord
     public function getNews()
     {
         return $this->hasMany(News::className(), ['categoryId' => 'categoryId']);
+    }
+    public static function listCategory(){
+        return ArrayHelper::map(self::find()->all(), 'categoryId', 'name');
     }
 }

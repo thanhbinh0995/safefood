@@ -9,6 +9,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use common\components\Util;
 
 AppAsset::register($this);
 ?>
@@ -19,63 +20,71 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
+    <title><?php if ($this->title) echo $this->title; else echo 'Home';  ?></title>
     <?php $this->head() ?>
 </head>
 <body>
 <?php $this->beginBody() ?>
 
-<div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => 'My Company',
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    ?>
+<div class="wrapper">
+    <div class="top"></div>
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="container">
+                    <div class="navbar-header">
+                        <div class="logo">
+                            <a href="" class="navbar-brand">
+                                <img class="img-responsive" src="<?=  Util::getUrlImage('logo.png')  ?>" alt="logo"/>
+                                <div class="logo-text">
+                                    <p class="logo-text-top">Safe Food</p>
+                                    <p class="logo-text-bottom">How to Tell if Food is Safe to Eat</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div id="navbar" class="nav navbar-nav navbar-right navbar-collapse collapse">
+                        <ul class="nav navbar-nav text-center">
+                            <li class="first"><a href="index">Home</a></li>
+                            <li class="<?php if ($this->title === 'Safe Food | News') echo 'active'?>"><a href="/site/news">News</a></li>
+                            <li class="<?php if ($this->title === 'Safe Food | List safe') echo 'active'?>"><a href="/site/list-safe">List Safe</a></li>
+                            <li class="<?php if ($this->title === 'about') echo 'active'?>"><a href="list-non-safe">List Non-safe</a></li>
+                            <li class="<?php if ($this->title === 'about') echo 'active'?>"><a href="about">About us</a></li>
+                            <li class="last"><a href="contact" class="last">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
+    <section id="main-content">
         <?= $content ?>
-    </div>
+    </section>
+    <footer id="footer" class="footer panel-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 copy-right">
+                    <ul class="social mb-60 wow fadeInUp" data-wow-duration="1.5s">
+                        <li>
+                            <a class="facebook-icon" target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li>
+                            <a class="tumblr-icon" target="_blank" href="https://www.tumblr.com/"><i class="fa fa-tumblr"></i></a>
+                        </li>
+                        <li>
+                            <a class="google-icon" target="_blank" href="https://google.com/"><i class="fa fa-google"></i></a>
+                        </li>
+                        <li>
+                            <p>Copyright @ by Tina</p>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </footer>
 </div>
-
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
-
 <?php $this->endBody() ?>
 </body>
 </html>

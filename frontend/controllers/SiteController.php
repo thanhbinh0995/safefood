@@ -1,4 +1,5 @@
 <?php
+
 namespace frontend\controllers;
 
 use Yii;
@@ -12,7 +13,10 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
-
+use common\models\News;
+use common\models\Restaurant;
+use common\models\RestaurantSearch;
+use yii\web\NotFoundHttpException;
 /**
  * Site controller
  */
@@ -210,4 +214,32 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
+    /**
+     * @return string
+     */
+    public function actionNews()
+    {
+        $news = News::find()->all();
+        return $this->render('news', ['news' => $news]);
+    }
+
+    public function actionNewsContent($newsId)
+    {
+        $news = News::findOne($newsId);
+        return $this->render('news-content', ['news' => $news]);
+    }
+
+    public function actionListSafe()
+    {
+        $restaurants = Restaurant::find()->join('JOIN', 'quality q', 'restaurant.restaurantCode = q.restaurantCode')
+            ->where(['>=', 'q.star', 3])->all();
+//        $searchModel = new RestaurantSearch();
+//        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('list-safe', [
+            'restaurants' => $restaurants
+        ]);
+    }
+
 }
