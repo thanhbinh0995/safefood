@@ -17,16 +17,17 @@ use common\models\News;
 use common\models\Restaurant;
 use common\models\RestaurantSearch;
 use yii\web\NotFoundHttpException;
+use common\models\Quality;
+
 /**
  * Site controller
  */
-class SiteController extends Controller
-{
+class SiteController extends Controller {
+
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
+    public function behaviors() {
         return [
             'access' => [
                 'class' => AccessControl::className(),
@@ -56,8 +57,7 @@ class SiteController extends Controller
     /**
      * @inheritdoc
      */
-    public function actions()
-    {
+    public function actions() {
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
@@ -74,8 +74,7 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionIndex()
-    {
+    public function actionIndex() {
         return $this->render('index');
     }
 
@@ -84,8 +83,7 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionLogin()
-    {
+    public function actionLogin() {
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -95,7 +93,7 @@ class SiteController extends Controller
             return $this->goBack();
         } else {
             return $this->render('login', [
-                'model' => $model,
+                        'model' => $model,
             ]);
         }
     }
@@ -105,8 +103,7 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionLogout()
-    {
+    public function actionLogout() {
         Yii::$app->user->logout();
 
         return $this->goHome();
@@ -117,8 +114,7 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionContact()
-    {
+    public function actionContact() {
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
@@ -130,7 +126,7 @@ class SiteController extends Controller
             return $this->refresh();
         } else {
             return $this->render('contact', [
-                'model' => $model,
+                        'model' => $model,
             ]);
         }
     }
@@ -140,8 +136,7 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionAbout()
-    {
+    public function actionAbout() {
         return $this->render('about');
     }
 
@@ -150,8 +145,7 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionSignup()
-    {
+    public function actionSignup() {
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
@@ -162,7 +156,7 @@ class SiteController extends Controller
         }
 
         return $this->render('signup', [
-            'model' => $model,
+                    'model' => $model,
         ]);
     }
 
@@ -171,8 +165,7 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionRequestPasswordReset()
-    {
+    public function actionRequestPasswordReset() {
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
@@ -185,7 +178,7 @@ class SiteController extends Controller
         }
 
         return $this->render('requestPasswordResetToken', [
-            'model' => $model,
+                    'model' => $model,
         ]);
     }
 
@@ -196,8 +189,7 @@ class SiteController extends Controller
      * @return mixed
      * @throws BadRequestHttpException
      */
-    public function actionResetPassword($token)
-    {
+    public function actionResetPassword($token) {
         try {
             $model = new ResetPasswordForm($token);
         } catch (InvalidParamException $e) {
@@ -211,34 +203,47 @@ class SiteController extends Controller
         }
 
         return $this->render('resetPassword', [
-            'model' => $model,
+                    'model' => $model,
         ]);
     }
 
     /**
      * @return string
      */
-    public function actionNews()
-    {
+    public function actionNews() {
         $news = News::find()->all();
         return $this->render('news', ['news' => $news]);
     }
 
-    public function actionNewsContent($newsId)
-    {
+    public function actionNewsContent($newsId) {
         $news = News::findOne($newsId);
         return $this->render('news-content', ['news' => $news]);
     }
 
-    public function actionListSafe()
-    {
+    public function actionListSafe() {
         $restaurants = Restaurant::find()->join('JOIN', 'quality q', 'restaurant.restaurantCode = q.restaurantCode')
-            ->where(['>=', 'q.star', 3])->all();
+                        ->where(['>=', 'q.star', 3])->all();
 //        $searchModel = new RestaurantSearch();
 //        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('list-safe', [
-            'restaurants' => $restaurants
+                    'restaurants' => $restaurants
+        ]);
+    }
+
+    public function actionListNonSafe() {
+       
+        $qualities = Quality::find()->where(['<', 'star', 3])->all();
+        foreach ($qualities as $quality) {
+            $nonSafe['quality'] = $quality->star;
+            $nonSafe['address'] = $quality->restaurantCode0->address;
+            $nonSafe['food'] = $quality->food->name;
+            $nonSafe['category'] = $quality->food->category->name;
+            $listNonSafe[] = $nonSafe;
+        }
+        
+        return $this->render('list-non-safe', [
+                    'listNonSafe' => $listNonSafe
         ]);
     }
 

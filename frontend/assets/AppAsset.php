@@ -25,12 +25,17 @@ class AppAsset extends AssetBundle {
         'css/index.css',
         'css/contact.css',
         'css/page.css',
-        'css/portfolio.css',
+    
         'css/team.css',
-        'css/styles.css'
+        'css/styles.css',
+        'css/portfolio.css',
     ];
     public $js = [
-        'js/main.js'
+        'js/jquery.min.js',
+        'js/bootstrap.min.js',
+        'js/isotope.min.js',
+        'js/main.js',
+        
     ];
     public $depends = [
         'yii\web\YiiAsset',

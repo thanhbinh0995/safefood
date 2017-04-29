@@ -10,9 +10,9 @@ $(document).on('click', '.panel-heading span.clickable', function(e){
 		$this.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
 	}
 });
-// $(document).on('click', '.panel-heading h4.clickable', function(e){
-// 	window.location="news-content";
-// });
+$(document).on('click', '.panel-heading h4.clickable', function(e){
+	window.location="news-content.html";
+});
 jQuery(document).ready(function() {
 	var e = $(".portfolio-grid");
 	e.isotope({
