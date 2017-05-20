@@ -30,7 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'qualityId',
             'foodId',
-            'restaurantCode',
             'star',
             'created_at',
             'updated_at',

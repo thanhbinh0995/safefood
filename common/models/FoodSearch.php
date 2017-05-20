@@ -18,7 +18,7 @@ class FoodSearch extends Food
     public function rules()
     {
         return [
-            [['foodId', 'categoryId', 'created_at', 'updated_at', 'deleted_at'], 'integer'],
+            [['foodId', 'categoryId','restaurantCode', 'created_at', 'updated_at', 'deleted_at','qualityId'], 'integer'],
             [['name', 'note'], 'safe'],
         ];
     }
@@ -48,6 +48,11 @@ class FoodSearch extends Food
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+         $dataProvider->sort->attributes['qualityId'] = [
+
+    'asc' => ['quality.star' => SORT_ASC],
+    'desc' => ['quality.star' => SORT_DESC],
+];
 
         $this->load($params);
 
@@ -56,7 +61,7 @@ class FoodSearch extends Food
             // $query->where('0=1');
             return $dataProvider;
         }
-
+        $query->joinWith('qualities');
         // grid filtering conditions
         $query->andFilterWhere([
             'foodId' => $this->foodId,
@@ -64,8 +69,10 @@ class FoodSearch extends Food
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'deleted_at' => $this->deleted_at,
+            'quality.foodId'  => $this->qualityId,
+            'restaurantCode' => $this->restaurantCode
         ]);
-
+        
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'note', $this->note]);
 

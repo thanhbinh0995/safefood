@@ -15,7 +15,6 @@ class m170414_145544_init_quality_tbl extends Migration
         $this->createTable('{{%quality}}', [
             'qualityId' => $this->primaryKey(),
             'foodId' => $this->integer()->notNull(),
-            'restaurantCode' => $this->integer()->notNull(),
             'star' => $this->integer()->notNull(),
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),

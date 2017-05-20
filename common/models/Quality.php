@@ -1,6 +1,7 @@
 <?php
 
 namespace common\models;
+use yii\helpers\ArrayHelper;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
@@ -38,10 +39,9 @@ class Quality extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['foodId', 'restaurantCode', 'star'], 'required'],
-            [['foodId', 'restaurantCode', 'star', 'created_at', 'updated_at', 'deleted_at'], 'integer'],
+            [['foodId',  'star'], 'required'],
+            [['foodId',  'star', 'created_at', 'updated_at', 'deleted_at'], 'integer'],
             [['foodId'], 'exist', 'skipOnError' => true, 'targetClass' => Food::className(), 'targetAttribute' => ['foodId' => 'foodId']],
-            [['restaurantCode'], 'exist', 'skipOnError' => true, 'targetClass' => Restaurant::className(), 'targetAttribute' => ['restaurantCode' => 'restaurantCode']],
         ];
     }
 
@@ -53,7 +53,6 @@ class Quality extends \yii\db\ActiveRecord
         return [
             'qualityId' => 'Quality ID',
             'foodId' => 'Food ID',
-            'restaurantCode' => 'Restaurant Code',
             'star' => 'Star',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
@@ -72,8 +71,8 @@ class Quality extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getRestaurantCode0()
-    {
-        return $this->hasOne(Restaurant::className(), ['restaurantCode' => 'restaurantCode']);
+
+    public function listQuality(){
+        return ArrayHelper::map(self::find()->all(), 'foodId', 'star');
     }
 }

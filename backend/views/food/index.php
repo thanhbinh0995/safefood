@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use common\models\Category;
+use common\models\Quality;
+use common\models\Restaurant;
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\FoodSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -28,12 +30,29 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'categoryId',
                 'filter' => Category::listCategory(),
                 'value' => function ($model) {
+    
                     return $model->category->name;
                 },
             ],
             'name',
             'note',
-            'created_at',
+            [
+                'attribute' => 'qualityId',
+                'filter' => Quality::listQuality(),
+                'value' => function ($model) {
+                    $bool = isset( Quality::listQuality()[$model->foodId]);
+                    if($bool == 1)
+                    return Quality::listQuality()[$model->foodId];
+                    else return "not set";
+                },
+            ],
+            [
+                'attribute' => 'restaurantCode',
+                'filter' => Restaurant::listRestaurant(),
+                'value' => function ($model) {
+                    return $model->restaurant->name;
+                },
+            ],
             // 'updated_at',
             // 'deleted_at',
 

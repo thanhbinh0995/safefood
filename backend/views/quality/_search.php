@@ -19,7 +19,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'foodId') ?>
 
-    <?= $form->field($model, 'restaurantCode') ?>
 
     <?= $form->field($model, 'star') ?>
 

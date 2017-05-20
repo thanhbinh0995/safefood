@@ -13,6 +13,8 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'categoryId')->dropDownList(\common\models\Category::listCategory  ()) ?>
+    <?= $form->field($model, 'restaurantCode')->dropDownList(\common\models\Restaurant::listRestaurant  ()) ?>
+
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'note')->textInput(['maxlength' => true]) ?>

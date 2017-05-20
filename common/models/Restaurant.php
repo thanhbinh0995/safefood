@@ -66,9 +66,9 @@ class Restaurant extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getQualities()
+    public function getFoods()
     {
-        return $this->hasMany(Quality::className(), ['restaurantCode' => 'restaurantCode']);
+        return $this->hasMany(Food::className(), ['restaurantCode' => 'restaurantCode']);
     }
 
     public function listRestaurant()

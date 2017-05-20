@@ -18,7 +18,7 @@ class QualitySearch extends Quality
     public function rules()
     {
         return [
-            [['qualityId', 'foodId', 'restaurantCode', 'star', 'created_at', 'updated_at', 'deleted_at'], 'integer'],
+            [['qualityId', 'foodId', 'star', 'created_at', 'updated_at', 'deleted_at'], 'integer'],
         ];
     }
 
@@ -60,7 +60,6 @@ class QualitySearch extends Quality
         $query->andFilterWhere([
             'qualityId' => $this->qualityId,
             'foodId' => $this->foodId,
-            'restaurantCode' => $this->restaurantCode,
             'star' => $this->star,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

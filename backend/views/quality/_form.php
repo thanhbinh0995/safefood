@@ -14,7 +14,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'foodId')->dropDownList(\common\models\Food::listFood()) ?>
 
-    <?= $form->field($model, 'restaurantCode')->dropDownList(\common\models\Restaurant::listRestaurant()) ?>
 
     <?= $form->field($model, 'star')->textInput() ?>
 

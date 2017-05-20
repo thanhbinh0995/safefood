@@ -21,6 +21,8 @@ use yii\helpers\ArrayHelper;
  */
 class Food extends \yii\db\ActiveRecord
 {
+    public $qualityId;
+    public $address;
     public function behaviors()
     {
         return [
@@ -42,10 +44,11 @@ class Food extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['categoryId', 'name'], 'required'],
-            [['categoryId', 'created_at', 'updated_at', 'deleted_at'], 'integer'],
-            [['name', 'note'], 'string', 'max' => 255],
+            [['categoryId', 'name','restaurantCode'], 'required'],
+            [['categoryId','qualityId', 'created_at', 'updated_at', 'deleted_at','restaurantCode'], 'integer'],
+            [['name', 'note','address'], 'string', 'max' => 255],
             [['categoryId'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['categoryId' => 'categoryId']],
+            [['restaurantCode'], 'exist', 'skipOnError' => true, 'targetClass' => Restaurant::className(), 'targetAttribute' => ['restaurantCode' => 'restaurantCode']],
         ];
     }
 
@@ -62,6 +65,8 @@ class Food extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'deleted_at' => 'Deleted At',
+            'qualityId' => 'Quality',
+            'restaurantCode'=> 'Address'
         ];
     }
 
@@ -72,7 +77,10 @@ class Food extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Category::className(), ['categoryId' => 'categoryId']);
     }
-
+    public function getRestaurant()
+    {
+        return $this->hasOne(Restaurant::className(), ['restaurantCode' => 'restaurantCode']);
+    }
     /**
      * @return \yii\db\ActiveQuery
      */

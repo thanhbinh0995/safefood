@@ -13,6 +13,7 @@ class m170414_145523_init_food_tbl extends Migration
         $this->createTable('{{%food}}', [
             'foodId' => $this->primaryKey(),
             'categoryId' => $this->integer()->notNull(),
+            'restaurantCode' => $this->integer()->notNull(),
             'name' => $this->string()->notNull(),
             'note' => $this->string(),
             'created_at' => $this->integer()->notNull(),
